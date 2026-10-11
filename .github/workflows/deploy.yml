@@ -1,0 +1,31 @@
+name: deploy
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  AWS_REGION: us-east-1
+  BUCKET: jamesdouthit-com-site
+  DISTRIBUTION_ID: CHANGEME
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::931745839902:role/github-site-deploy
+          aws-region: ${{ env.AWS_REGION }}
+      - name: Upload site, leaving the game bundle alone
+        run: |
+          aws s3 sync . "s3://$BUCKET/" --delete \
+            --exclude ".git/*" --exclude ".github/*" --exclude "README.md" --exclude "500cardgame/*" \
+            --cache-control "public,max-age=300"
+      - run: aws cloudfront create-invalidation --distribution-id "$DISTRIBUTION_ID" --paths "/*" --query Invalidation.Id
