@@ -14,46 +14,46 @@ body {
   line-height: 1.5;
 }
 main {
-  max-width: 1080px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 72px 28px 112px;
+  padding: 64px 48px 104px;
 }
 h1 {
-  font-size: clamp(56px, 9vw, 96px);
+  font-size: clamp(44px, 6vw, 72px);
   line-height: 1.1;
   letter-spacing: 2px;
   margin: 0 0 8px;
   text-shadow: 0 5px 0 #0f1a24;
 }
-h2 { font-size: 36px; margin: 48px 0 16px; }
-p { font-size: 26px; margin: 0 0 20px; }
+h2 { font-size: 30px; margin: 44px 0 14px; }
+p { font-size: 21px; margin: 0 0 18px; max-width: 900px; }
 .muted { color: var(--muted); }
 .nav, .runs {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin-top: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 22px;
+  margin-top: 36px;
 }
 @media (max-width: 760px) { .nav, .runs { grid-template-columns: 1fr; } }
 .tile {
   display: block;
-  padding: 34px 30px;
+  padding: 28px 26px;
   background: var(--panel);
   border: 3px solid var(--ink);
   color: var(--ink);
   text-decoration: none;
 }
 .tile:hover { border-color: var(--accent); }
-.tile strong { display: block; font-size: 38px; line-height: 1.15; margin-bottom: 10px; }
-.tile span { color: var(--muted); font-size: 22px; }
+.tile strong { display: block; font-size: 29px; line-height: 1.15; margin-bottom: 8px; }
+.tile span { color: var(--muted); font-size: 18px; }
 .run { display: flex; flex-direction: column; gap: 14px; }
 .sub {
   display: block;
-  padding: 18px 30px;
+  padding: 15px 26px;
   border: 3px solid var(--muted);
   color: var(--ink);
   text-decoration: none;
-  font-size: 26px;
+  font-size: 21px;
 }
 .sub::before { content: "↳ "; color: var(--muted); }
 .sub:hover { border-color: var(--accent); }
@@ -61,7 +61,7 @@ p { font-size: 26px; margin: 0 0 20px; }
   display: inline-block;
   color: var(--muted);
   text-decoration: none;
-  font-size: 22px;
+  font-size: 18px;
   letter-spacing: 1px;
   margin-bottom: 24px;
 }
